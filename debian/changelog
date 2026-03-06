@@ -1,3 +1,10 @@
+libvirt (10.7.0-3deepin6) unstable; urgency=medium
+
+  * add patch commit and add xml path to 
+    debian/libvirt-common.install.in
+
+ -- tunaichao <tunaichao@uniontech.com>  Fri, 06 Mar 2026 14:19:34 +0800
+
 libvirt (10.7.0-3deepin5) unstable; urgency=medium
 
   * feat: add Dharma CPU patch, Chengdu CPU patch
