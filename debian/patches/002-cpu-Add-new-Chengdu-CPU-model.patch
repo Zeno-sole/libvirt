@@ -1,8 +1,23 @@
-Index: my_libvirt/src/cpu_map/index.xml
-===================================================================
---- my_libvirt.orig/src/cpu_map/index.xml
-+++ my_libvirt/src/cpu_map/index.xml
-@@ -76,6 +76,7 @@
+From 299a26d3d0e67facf71c6935513760ce3eb68a86 Mon Sep 17 00:00:00 2001
+From: Yongchen Lou <louyongchen@hygon.cn>
+Date: Wed, 15 Oct 2025 08:55:54 +0000
+Subject: [PATCH] cpu: Add new Chengdu CPU model
+
+Add Hygon Chengdu CPU model to the processor model.
+
+Signed-off-by: Yongchen Lou <louyongchen@hygon.cn>
+---
+ src/cpu_map/index.xml       |   1 +
+ src/cpu_map/meson.build     |   1 +
+ src/cpu_map/x86_Chengdu.xml | 100 ++++++++++++++++++++++++++++++++++++
+ 3 files changed, 102 insertions(+)
+ create mode 100644 src/cpu_map/x86_Chengdu.xml
+
+diff --git a/src/cpu_map/index.xml b/src/cpu_map/index.xml
+index 5d18a4a..dd65e38 100644
+--- a/src/cpu_map/index.xml
++++ b/src/cpu_map/index.xml
+@@ -75,6 +75,7 @@
      <!-- Hygon CPU models -->
      <include filename='x86_Dhyana.xml'/>
      <include filename='x86_Dharma.xml'/>
@@ -10,10 +25,10 @@ Index: my_libvirt/src/cpu_map/index.xml
    </arch>
  
    <arch name='ppc64'>
-Index: my_libvirt/src/cpu_map/meson.build
-===================================================================
---- my_libvirt.orig/src/cpu_map/meson.build
-+++ my_libvirt/src/cpu_map/meson.build
+diff --git a/src/cpu_map/meson.build b/src/cpu_map/meson.build
+index ca4934d..bb3a323 100644
+--- a/src/cpu_map/meson.build
++++ b/src/cpu_map/meson.build
 @@ -30,6 +30,7 @@ cpumap_data = [
    'x86_Broadwell.xml',
    'x86_Cascadelake-Server-noTSX.xml',
@@ -22,10 +37,11 @@ Index: my_libvirt/src/cpu_map/meson.build
    'x86_Conroe.xml',
    'x86_Cooperlake.xml',
    'x86_core2duo.xml',
-Index: my_libvirt/src/cpu_map/x86_Chengdu.xml
-===================================================================
+diff --git a/src/cpu_map/x86_Chengdu.xml b/src/cpu_map/x86_Chengdu.xml
+new file mode 100644
+index 0000000..ab6cf26
 --- /dev/null
-+++ my_libvirt/src/cpu_map/x86_Chengdu.xml
++++ b/src/cpu_map/x86_Chengdu.xml
 @@ -0,0 +1,100 @@
 +<cpus>
 +  <model name='Chengdu'>
@@ -127,3 +143,6 @@ Index: my_libvirt/src/cpu_map/x86_Chengdu.xml
 +    <feature name='xsaveopt'/>
 +  </model>
 +</cpus>
+-- 
+2.43.0
+

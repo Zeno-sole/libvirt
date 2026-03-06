@@ -1,8 +1,23 @@
-Index: my_libvirt/src/cpu_map/index.xml
-===================================================================
---- my_libvirt.orig/src/cpu_map/index.xml
-+++ my_libvirt/src/cpu_map/index.xml
-@@ -75,6 +75,7 @@
+From e4086ef3d27f91803c9a1ccc93d5b0fc6b11d7f9 Mon Sep 17 00:00:00 2001
+From: Yongchen Lou <louyongchen@hygon.cn>
+Date: Wed, 15 Oct 2025 08:55:14 +0000
+Subject: [PATCH] cpu: Add new Dharma CPU model
+
+Add Hygon Dharma CPU model to the processor model.
+
+Signed-off-by: Yongchen Lou <louyongchen@hygon.cn>
+---
+ src/cpu_map/index.xml      |  1 +
+ src/cpu_map/meson.build    |  1 +
+ src/cpu_map/x86_Dharma.xml | 83 ++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 85 insertions(+)
+ create mode 100644 src/cpu_map/x86_Dharma.xml
+
+diff --git a/src/cpu_map/index.xml b/src/cpu_map/index.xml
+index d2c5af5..5d18a4a 100644
+--- a/src/cpu_map/index.xml
++++ b/src/cpu_map/index.xml
+@@ -74,6 +74,7 @@
  
      <!-- Hygon CPU models -->
      <include filename='x86_Dhyana.xml'/>
@@ -10,10 +25,10 @@ Index: my_libvirt/src/cpu_map/index.xml
    </arch>
  
    <arch name='ppc64'>
-Index: my_libvirt/src/cpu_map/meson.build
-===================================================================
---- my_libvirt.orig/src/cpu_map/meson.build
-+++ my_libvirt/src/cpu_map/meson.build
+diff --git a/src/cpu_map/meson.build b/src/cpu_map/meson.build
+index ae5293e..ca4934d 100644
+--- a/src/cpu_map/meson.build
++++ b/src/cpu_map/meson.build
 @@ -36,6 +36,7 @@ cpumap_data = [
    'x86_coreduo.xml',
    'x86_cpu64-rhel5.xml',
@@ -22,10 +37,11 @@ Index: my_libvirt/src/cpu_map/meson.build
    'x86_Dhyana.xml',
    'x86_EPYC-IBPB.xml',
    'x86_EPYC.xml',
-Index: my_libvirt/src/cpu_map/x86_Dharma.xml
-===================================================================
+diff --git a/src/cpu_map/x86_Dharma.xml b/src/cpu_map/x86_Dharma.xml
+new file mode 100644
+index 0000000..bf20116
 --- /dev/null
-+++ my_libvirt/src/cpu_map/x86_Dharma.xml
++++ b/src/cpu_map/x86_Dharma.xml
 @@ -0,0 +1,83 @@
 +<cpus>
 +  <model name='Dharma'>
@@ -110,3 +126,6 @@ Index: my_libvirt/src/cpu_map/x86_Dharma.xml
 +    <feature name='xsaveopt'/>
 +  </model>
 +</cpus>
+-- 
+2.43.0
+
