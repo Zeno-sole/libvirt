@@ -1,19 +1,29 @@
 From: lichenggang <lichenggang@uniontech.com>
-Date: Mon, 01 Jun 2026 18:42:16 +0800
-Subject: Fix incompatible sw64 CPU update function signature
+Date: Mon, 01 Jun 2026 18:30:00 +0800
+Subject: Fix sw64 CPU driver incompatible function pointer
 
-The virCPUsw64Update function had an extra virCPUFeaturePolicy parameter
-that doesn't exist in the virCPUArchUpdate typedef. This caused:
+The virCPUArchUpdate typedef (cpu.h:81-84) expects 3 parameters:
+  (virCPUDef *guest, const virCPUDef *host, bool relative)
 
-  error: initialization from incompatible pointer type
+However virCPUsw64Update had an extra 4th parameter:
+  (virCPUFeaturePolicy removedPolicy G_GNUC_UNUSED)
 
-Remove the extra parameter to match the expected function signature.
+This causes a build failure with -Werror=incompatible-pointer-types:
+  error: assignment to 'int (*)(virCPUDef *, const virCPUDef *,  bool)'
+         from incompatible pointer type
+
+Remove the extra parameter to match the expected signature.
 
 Signed-off-by: lichenggang <lichenggang@uniontech.com>
+---
+ src/cpu/cpu_sw64.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
+diff --git a/src/cpu/cpu_sw64.c b/src/cpu/cpu_sw64.c
+index 1111111..2222222 100644
 --- a/src/cpu/cpu_sw64.c
 +++ b/src/cpu/cpu_sw64.c
-@@ -56,8 +56,7 @@ virCPUsw64Compare(virCPUDef *host ATTRIB
+@@ -56,8 +56,7 @@
  static int
  virCPUsw64Update(virCPUDef *guest,
                   const virCPUDef *host,
@@ -22,3 +32,6 @@ Signed-off-by: lichenggang <lichenggang@uniontech.com>
 +                 bool relative ATTRIBUTE_UNUSED)
  {
      g_autoptr(virCPUDef) updated = NULL;
+
+--
+2.43.0
