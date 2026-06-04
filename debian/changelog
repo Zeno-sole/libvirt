@@ -1,3 +1,15 @@
+libvirt (10.7.0+really9.10.0-1deepin18) unstable; urgency=medium
+
+  * Fix file conflict between libvirt-daemon-system and libvirt-daemon-
+    common
+  * Add Breaks/Replaces on libvirt-daemon-common in libvirt-daemon-
+    system
+  * During upgrade from 10.7.0-3deepin3, libvirt-daemon-system tries to
+    overwrite /etc/apparmor.d/usr.lib.libvirt.virt-aa-helper which is
+    owned by libvirt-daemon-common
+
+ -- lichenggang <lichenggang@uniontech.com>  Thu, 04 Jun 2026 14:18:19 +0800
+
 libvirt (10.7.0+really9.10.0-1deepin17) unstable; urgency=medium
 
   * Fix package file conflict between libvirt-daemon and libvirt-daemon-common

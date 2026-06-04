@@ -363,8 +363,10 @@ Suggests:
  zfsutils,
 Breaks:
  libvirt-common (<< 10.7.0+really9.10.0-1deepin6),
+ libvirt-daemon-common,
 Replaces:
  libvirt-common (<< 10.7.0+really9.10.0-1deepin6),
+ libvirt-daemon-common,
 Description: Libvirt daemon configuration files
  Libvirt is a C toolkit to interact with the virtualization capabilities
  of recent versions of Linux (and other OSes). The library aims at providing
